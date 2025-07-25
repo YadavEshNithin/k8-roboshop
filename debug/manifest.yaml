@@ -1,0 +1,10 @@
+apiVersion: v1 
+kind: Pod
+metadata:
+  name: debug
+  labels:
+    purpose: debug
+spec:
+  containers:
+    - name: debug
+      image: yadaveshnithin/debug:v1
