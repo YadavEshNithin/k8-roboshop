@@ -40,8 +40,8 @@ spec:
         - name: catalogue
           image: yadaveshnithin/catalogue:v1
           envFrom:
-          - configMapRef:
-            name: catalogue
+            - configMapRef:
+              name: catalogue
 
 
 ---
