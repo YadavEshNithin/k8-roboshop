@@ -1,0 +1,65 @@
+apiVersion: v1
+kind: Secret
+metadata:
+  name: mysql
+  labels:
+    purpose: secrets_reference-here
+type: Opaque
+data:
+  RABBITMQ_DEFAULT_USER: cm9ib3Nob3A=
+  RABBITMQ_DEFAULT_PASS: cm9ib3Nob3AxMjM=
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mysql
+  namespace: roboshop
+  labels:
+    component: mysql
+    project: roboshop
+    tier: database
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      component: mysql
+      project: roboshop
+      tier: database
+  template:
+    metadata:
+      labels:
+        component: mysql
+        project: roboshop
+        tier: database
+    spec:
+      containers:
+        - name: mysql
+          image: yadaveshnithin/mysql:v1
+          envFrom:
+          - secretRef:
+              name: mysql
+
+
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: mysql
+  namespace: roboshop
+  labels:
+    component: mysql
+    project: roboshop
+    tier: database
+spec:
+  selector:
+    component: mysql
+    project: roboshop
+    tier: database
+  ports:
+    - protocol: TCP
+      port: 3306 
+      targetPort: 3306 
+
