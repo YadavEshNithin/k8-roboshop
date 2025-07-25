@@ -6,7 +6,7 @@ metadata:
   labels:
     component: frontend
     project: roboshop
-    tier: app
+    tier: web
 data:
   nginx.conf: |
     user nginx;
@@ -82,20 +82,20 @@ metadata:
   labels:
     component: frontend
     project: roboshop
-    tier: app
+    tier: web
 spec:
   replicas: 1
   selector:
     matchLabels:
       component: frontend
       project: roboshop
-      tier: app
+      tier: web
   template:
     metadata:
       labels:
         component: frontend
         project: roboshop
-        tier: app
+        tier: web
     spec:
       containers:
         - name: frontend
@@ -127,13 +127,13 @@ metadata:
   labels:
     component: frontend
     project: roboshop
-    tier: app
+    tier: web
 spec:
   type: LoadBalancer
   selector:
     component: frontend
     project: roboshop
-    tier: app
+    tier: web
   ports:
     - protocol: TCP
       port: 80
