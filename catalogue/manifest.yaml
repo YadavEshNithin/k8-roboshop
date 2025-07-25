@@ -4,7 +4,7 @@ metadata:
   name: catalogue
   namespace: roboshop
   labels:
-    purpose: catalogue
+    component: catalogue
     project: roboshop
     tier: app
 data:
@@ -19,20 +19,20 @@ metadata:
   name: catalogue
   namespace: roboshop
   labels:
-    purpose: catalogue
+    component: catalogue
     project: roboshop
     tier: app
 spec:
   replicas: 3
   selector:
     matchLabels:
-      purpose: catalogue
+      component: catalogue
       project: roboshop
       tier: app
   template:
     metadata:
       labels:
-        purpose: catalogue
+        component: catalogue
         project: roboshop
         tier: app
     spec:
@@ -52,12 +52,12 @@ metadata:
   name: catalogue
   namespace: roboshop
   labels:
-    purpose: catalogue
+    component: catalogue
     project: roboshop
     tier: app
 spec:
   selector:
-    purpose: catalogue
+    component: catalogue
     project: roboshop
     tier: app
   ports:
